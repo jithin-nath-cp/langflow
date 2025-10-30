@@ -23,7 +23,7 @@ export const ThemeButtons = () => {
     }
   }, [systemTheme, dark, hasInteracted]);
 
-  const handleThemeChange = (theme) => {
+  const handleThemeChange = (theme: string) => {
     setHasInteracted(true); // Mark that a button has been clicked
     setSelectedTheme(theme);
     setThemePreference(theme);
@@ -31,11 +31,17 @@ export const ThemeButtons = () => {
 
   return (
     <div className="relative ml-auto inline-flex rounded-full border border-border">
-      {/* Sliding Indicator - Behind the Buttons */}
+      {/* Sliding Indicator - Enhanced with orange theme */}
       <div
-        className={`absolute bottom-0.5 left-[1px] top-0.5 w-[30%] rounded-full bg-amber-400 ${
+        className={`absolute bottom-0.5 left-[1px] top-0.5 w-[30%] rounded-full ${
           hasInteracted ? "transition-all duration-300" : ""
-        } dark:bg-purple-400`}
+        } ${
+          selectedTheme === "light"
+            ? "bg-primary" // Orange for light theme
+            : selectedTheme === "dark"
+              ? "bg-primary" // Orange for dark theme
+              : "bg-primary" // Orange for system theme
+        }`}
         style={{
           transform: `translateX(${
             selectedTheme === "light"
@@ -53,8 +59,8 @@ export const ThemeButtons = () => {
         unstyled
         className={`relative z-10 inline-flex items-center rounded-full px-1 ${
           selectedTheme === "light"
-            ? "text-foreground"
-            : "text-foreground hover:bg-amber-400 hover:text-background"
+            ? "text-primary-foreground" // White text on orange background
+            : "text-foreground hover:bg-primary/20 hover:text-primary"
         }`}
         onClick={() => handleThemeChange("light")}
         data-testid="menu_light_button"
@@ -68,8 +74,8 @@ export const ThemeButtons = () => {
         unstyled
         className={`relative z-10 mx-1 inline-flex items-center rounded-full px-1 ${
           selectedTheme === "dark"
-            ? "bg-indigo-foreground text-primary hover:bg-indigo-foreground"
-            : "text-foreground hover:bg-indigo-foreground hover:text-background"
+            ? "text-primary-foreground" // White text on orange background
+            : "text-foreground hover:bg-primary/20 hover:text-primary"
         }`}
         onClick={() => handleThemeChange("dark")}
         data-testid="menu_dark_button"
@@ -83,8 +89,8 @@ export const ThemeButtons = () => {
         unstyled
         className={`relative z-10 inline-flex items-center rounded-full px-1 ${
           selectedTheme === "system"
-            ? "bg-foreground text-background"
-            : "hover:bg-foreground hover:text-background"
+            ? "text-primary-foreground" // White text on orange background
+            : "text-foreground hover:bg-primary/20 hover:text-primary"
         }`}
         onClick={() => handleThemeChange("system")}
         data-testid="menu_system_button"

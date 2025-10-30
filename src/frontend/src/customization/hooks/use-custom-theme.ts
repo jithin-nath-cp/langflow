@@ -27,10 +27,14 @@ const useTheme = () => {
     } else if (themePreference === "dark") {
       setDark(true);
       setSystemTheme(false);
-    } else {
-      // Default to system theme
+    } else if (themePreference === "system") {
       setSystemTheme(true);
       handleSystemTheme();
+    } else {
+      // Default to light theme when no preference is set
+      setDark(false);
+      setSystemTheme(false);
+      localStorage.setItem("themePreference", "light");
     }
   }, []);
 

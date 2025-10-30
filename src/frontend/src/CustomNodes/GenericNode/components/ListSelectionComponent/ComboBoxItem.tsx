@@ -22,7 +22,7 @@ const ComboBoxItem = ({ item }: ComboBoxItemProps) => {
             className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-border border-muted-foreground shadow transition-all hover:shadow-md"
             id={`check-${item?.name}`}
           />
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-black opacity-0 peer-checked:bg-primary peer-checked:opacity-100">
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white opacity-0 peer-checked:bg-primary peer-checked:opacity-100">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-3.5 w-3.5"

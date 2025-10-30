@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AlertDropdown from "@/alerts/alertDropDown";
 import DataStaxLogo from "@/assets/DataStaxLogo.svg?react";
-import LangflowLogo from "@/assets/LangflowLogo.svg?react";
+import LangflowLogo from "@/assets/vyturr.svg?react";
 import ForwardedIconComponent from "@/components/common/genericIconComponent";
 import ShadTooltip from "@/components/common/shadTooltipComponent";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ import FlowMenu from "./components/FlowMenu";
 export default function AppHeader(): JSX.Element {
   const notificationCenter = useAlertStore((state) => state.notificationCenter);
   const navigate = useCustomNavigate();
-  const [activeState, setActiveState] = useState<"notifications" | null>(null);
+  const [_activeState, setActiveState] = useState<"notifications" | null>(null);
   const notificationRef = useRef<HTMLButtonElement | null>(null);
   const notificationContentRef = useRef<HTMLDivElement | null>(null);
   useTheme();
@@ -42,7 +42,7 @@ export default function AppHeader(): JSX.Element {
     };
   }, []);
 
-  const getNotificationBadge = () => {
+  const _getNotificationBadge = () => {
     const baseClasses = "absolute h-1 w-1 rounded-full bg-destructive";
     return notificationCenter
       ? `${baseClasses} right-[0.3rem] top-[5px]`
@@ -51,7 +51,7 @@ export default function AppHeader(): JSX.Element {
 
   return (
     <div
-      className={`z-10 flex h-[48px] w-full items-center justify-between border-b pr-5 pl-2.5 dark:bg-background`}
+      className={`z-10 flex h-[48px] w-full items-center justify-between border-b pr-5 pl-2.5 bg-gradient-to-r from-primary-200 via-primary-600 to-primary-700`}
       data-testid="app-header"
     >
       {/* Left Section */}
@@ -65,11 +65,11 @@ export default function AppHeader(): JSX.Element {
           className="mr-1 flex h-8 w-8 items-center"
           data-testid="icon-ChevronLeft"
         >
-          {ENABLE_DATASTAX_LANGFLOW ? (
-            <DataStaxLogo className="fill-black dark:fill-[white]" />
-          ) : (
-            <LangflowLogo className="h-5 w-5" />
-          )}
+          {/* {ENABLE_DATASTAX_LANGFLOW ? (
+            <DataStaxLogo className="fill-white" />
+          ) : ( */}
+          <LangflowLogo className="h-5 w-5 fill-white" />
+          {/* )} */}
         </Button>
         {ENABLE_DATASTAX_LANGFLOW && (
           <>
@@ -85,7 +85,7 @@ export default function AppHeader(): JSX.Element {
       </div>
 
       {/* Right Section */}
-      <div
+      {/* <div
         className={`relative left-3 z-30 flex shrink-0 items-center gap-3`}
         data-testid="header_right_section_wrapper"
       >
@@ -117,14 +117,14 @@ export default function AppHeader(): JSX.Element {
                 }
                 data-testid="notification_button"
               >
-                <div className="hit-area-hover group relative items-center rounded-md px-2 py-2 text-muted-foreground">
+                <div className="hit-area-hover group relative items-center rounded-md px-2 py-2 text-white">
                   <span className={getNotificationBadge()} />
                   <ForwardedIconComponent
                     name="Bell"
                     className={`side-bar-button-size h-4 w-4 ${
                       activeState === "notifications"
-                        ? "text-primary"
-                        : "text-muted-foreground group-hover:text-primary"
+                        ? "text-white"
+                        : "text-white/80 group-hover:text-white"
                     }`}
                     strokeWidth={2}
                   />
@@ -144,7 +144,7 @@ export default function AppHeader(): JSX.Element {
         <div className="flex">
           <CustomAccountMenu />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

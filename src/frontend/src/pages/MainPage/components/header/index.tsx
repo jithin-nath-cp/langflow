@@ -226,7 +226,7 @@ const HeaderComponent = ({
                   <Button
                     variant="default"
                     size="iconMd"
-                    className="z-50 px-2.5 !text-mmd"
+                    className="z-50 px-2.5 !text-white"
                     onClick={() => setNewProjectModal(true)}
                     id="new-project-btn"
                     data-testid="new-project-btn"
@@ -236,7 +236,7 @@ const HeaderComponent = ({
                       aria-hidden="true"
                       className="h-4 w-4"
                     />
-                    <span className="hidden whitespace-nowrap font-semibold md:inline">
+                    <span className="text-white hidden whitespace-nowrap font-semibold md:inline">
                       New Flow
                     </span>
                   </Button>

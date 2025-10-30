@@ -6,6 +6,9 @@ import plugin from "tailwindcss/plugin";
 import tailwindcssAnimate from "tailwindcss-animate";
 import tailwindcssDottedBackground from "tailwindcss-dotted-background";
 
+// Secondary color theme configuration - can be changed to: 'orange', 'gray', 'indigoViolet'
+const _secondaryColorTheme = "teal";
+
 const config = {
   variants: {
     extend: {
@@ -32,14 +35,17 @@ const config = {
       center: true,
       screens: {
         "2xl": "1400px",
-        "3xl": "1500px",
+        "3xl": "1600px", // Updated to match the styling guide
       },
     },
     extend: {
       screens: {
-        xl: "1200px",
-        "2xl": "1400px",
-        "3xl": "1500px",
+        sm: "640px", // Mobile landscape
+        md: "768px", // Tablet
+        lg: "1024px", // Desktop
+        xl: "1280px", // Large desktop
+        "2xl": "1400px", // Extra large
+        "3xl": "1600px", // Custom breakpoint from guide
       },
       keyframes: {
         // Overlay animations
@@ -96,6 +102,11 @@ const config = {
           "0%, 100%": { backgroundColor: "hsla(var(--accent-pink), 1)" },
           "50%": { backgroundColor: "hsla(var(--accent-pink), 0.4)" },
         },
+        // Additional animations from styling guide
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         // Animation definitions
@@ -107,8 +118,89 @@ const config = {
         "pulse-pink": "pulse-pink 2s linear infinite",
         "slow-wiggle": "wiggle 500ms ease-in-out 1",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        // Additional animations from styling guide
+        "marquee-linear": "marquee 15s linear infinite",
       },
       colors: {
+        // =================
+        // COMPREHENSIVE STYLING GUIDE COLOR SYSTEM
+        // =================
+
+        // Brand Colors (Blue Primary Theme)
+        brand: {
+          50: "#eaf2fe",
+          100: "#d3e4fc",
+          200: "#a9ccf9",
+          300: "#7eb3f6",
+          400: "#549bf3",
+          500: "#1868e8",
+          600: "#155bd0",
+          700: "#124eb8",
+          800: "#0f3fa0",
+          900: "#0035c9",
+        },
+
+        // Primary Colors (Blue)
+        primary: {
+          50: "#eaf2fe",
+          100: "#d3e4fc",
+          200: "#a9ccf9",
+          300: "#7eb3f6",
+          400: "#549bf3",
+          500: "#1868e8",
+          600: "#155bd0",
+          700: "#124eb8",
+          800: "#0f3fa0",
+          900: "#0035c9",
+          text: "#ffffff",
+          DEFAULT: "#1868e8",
+        },
+
+        // Secondary Colors (Teal - configurable)
+        secondaryTeal: {
+          // Teal theme (current)
+          50: "#e0f9f6",
+          100: "#b3eee7",
+          200: "#80e2d8",
+          300: "#4dd6c9",
+          400: "#26cbbd",
+          500: "#1db5a3",
+          600: "#189e8f",
+          700: "#137f74",
+          800: "#0f615a",
+          900: "#093f3a",
+          DEFAULT: "#1db5a3",
+          hover: "#189e8f",
+          active: "#137f74",
+          text: "#ffffff",
+        },
+
+        // Button Colors (same as primary for consistency)
+        button: {
+          50: "#eaf2fe",
+          100: "#d3e4fc",
+          200: "#a9ccf9",
+          300: "#7eb3f6",
+          400: "#549bf3",
+          500: "#1868e8",
+          600: "#155bd0",
+          700: "#124eb8",
+          800: "#0f3fa0",
+          900: "#0035c9",
+        },
+
+        // Utility colors from styling guide
+        backgroundUtil: { 500: "#f2f2f2", DEFAULT: "#F3F4F6" },
+        textPrimary: "#111827",
+        textSecondary: "#6B7280",
+        textDisabled: "#9CA3AF",
+        textLink: "#3B82F6",
+        textHighlight: "#F59E0B",
+        sideNavFill: "#16252B",
+
+        // =================
+        // EXISTING LANGFLOW COLORS (preserved for compatibility)
+        // =================
         "frozen-blue": "rgba(128, 190, 219, 0.86)", // Custom blue color for the frozen effect
         "frosted-glass": "rgba(255, 255, 255, 0.8)", // Custom frosted glass effect
         "component-icon": "var(--component-icon)",
@@ -206,11 +298,8 @@ const config = {
         "hard-zinc": "hsl(var(--hard-zinc))",
         "smooth-red": "hsl(var(--smooth-red))",
         "placeholder-foreground": "hsl(var(--placeholder-foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-          hover: "hsl(var(--primary-hover))",
-        },
+        // Note: primary colors are defined above in the brand/primary section using numbered scale
+        // Keeping only secondary here to avoid conflicts
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -323,13 +412,18 @@ const config = {
         lg: `var(--radius)`,
         md: `calc(var(--radius) - 2px)`,
         sm: "calc(var(--radius) - 4px)",
+        // Added from styling guide
+        "4xl": "2rem",
       },
       borderWidth: {
         1.75: "1.75px",
         1.5: "1.5px",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        // Updated to use Poppins as primary font from styling guide
+        sans: ["Poppins", "var(--font-sans)", ...fontFamily.sans],
+        poppins: ["Poppins", "sans-serif"], // Explicit Poppins
+        heading: ["Poppins", "sans-serif"], // Headings use Poppins
         mono: ["var(--font-mono)", ...fontFamily.mono],
         chivo: ["var(--font-chivo)", ...fontFamily.sans],
       },
@@ -348,6 +442,10 @@ const config = {
         90: "90",
         100: "100",
         999: "999",
+      },
+      spacing: {
+        128: "32rem",
+        144: "36rem",
       },
       fontSize: {
         xxs: "11px",

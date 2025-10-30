@@ -103,7 +103,7 @@ export const MenuBar = memo((): JSX.Element => {
             {currentFolder?.name && (
               <div className="hidden truncate md:flex">
                 <div
-                  className="cursor-pointer truncate text-sm text-muted-foreground hover:text-primary"
+                  className="cursor-pointer truncate text-sm text-white/80 hover:text-white"
                   onClick={() => {
                     navigate(
                       currentFolder?.id
@@ -118,7 +118,7 @@ export const MenuBar = memo((): JSX.Element => {
             )}
           </div>
           <div
-            className="hidden w-fit shrink-0 select-none font-normal text-muted-foreground md:flex"
+            className="hidden w-fit shrink-0 select-none font-normal text-white/80 md:flex"
             data-testid="menu_bar_separator"
           >
             /
@@ -131,7 +131,7 @@ export const MenuBar = memo((): JSX.Element => {
           </div>
           <PopoverTrigger asChild>
             <div
-              className="group relative -mr-5 flex shrink-0 cursor-pointer items-center gap-2 text-sm sm:whitespace-normal"
+              className="group relative -mr-5 flex shrink-0 cursor-pointer items-center gap-2 text-sm text-white sm:whitespace-normal"
               data-testid="menu_bar_display"
             >
               <span

@@ -465,7 +465,7 @@ describe("useDurationStore", () => {
         result.current.setDuration("persistent-2", 200);
       });
 
-      const durations = result.current.durations;
+      const _durations = result.current.durations;
 
       // Operations on one chat shouldn't affect others
       act(() => {

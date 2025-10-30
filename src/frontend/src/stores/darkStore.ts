@@ -7,6 +7,7 @@ const startedStars = Number(window.localStorage.getItem("githubStars")) ?? 0;
 export const useDarkStore = create<DarkStoreType>((set, get) => ({
   dark: (() => {
     const stored = window.localStorage.getItem("isDark");
+    // Default to light theme (false) when no preference is stored
     return stored !== null ? JSON.parse(stored) : false;
   })(),
   stars: startedStars,
