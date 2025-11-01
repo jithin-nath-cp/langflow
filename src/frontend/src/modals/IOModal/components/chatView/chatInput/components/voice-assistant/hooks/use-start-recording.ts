@@ -15,9 +15,9 @@ export const useStartRecording = async (
   setStatus: (status: string) => void,
 ) => {
   try {
-    const selectedMicrophone = localStorage.getItem("lf_selected_microphone");
+    const selectedMicrophone = localStorage.getItem("vyturrlynk_selected_microphone");
     const preferredLanguage =
-      localStorage.getItem("lf_preferred_language") || "en-US";
+      localStorage.getItem("vyturrlynk_preferred_language") || "en-US";
 
     const stream = await navigator?.mediaDevices?.getUserMedia({
       audio: {

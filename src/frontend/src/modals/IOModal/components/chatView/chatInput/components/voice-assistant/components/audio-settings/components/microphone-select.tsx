@@ -38,7 +38,7 @@ const MicrophoneSelect = ({
 
         if (audioInputDevices.length > 0 && !selectedMicrophone) {
           const savedMicrophoneId = localStorage.getItem(
-            "lf_selected_microphone",
+            "vyturrlynk_selected_microphone",
           );
           if (
             savedMicrophoneId &&

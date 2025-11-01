@@ -406,7 +406,7 @@ export async function buildFlowVertices({
     }
     onBuildError!("Error Building Flow", [
       (error as Error).message ||
-        "Langflow was not able to connect to the server. Please make sure your connection is working properly.",
+        "VyturrLynk was not able to connect to the server. Please make sure your connection is working properly.",
     ]);
     throw error;
   }

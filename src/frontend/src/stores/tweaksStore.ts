@@ -44,7 +44,7 @@ export const useTweaksStore = create<TweaksStoreType>((set, get) => ({
     set({
       currentFlowId: flowId,
     });
-    const tweaks = JSON.parse(getLocalStorage(`lf_tweaks_${flowId}`) || "{}");
+    const tweaks = JSON.parse(getLocalStorage(`vyturrlynk_tweaks_${flowId}`) || "{}");
     set({
       nodes: getNodesWithDefaultValue(nodes, tweaks),
     });
@@ -71,7 +71,7 @@ export const useTweaksStore = create<TweaksStoreType>((set, get) => ({
         }
       }
     });
-    setLocalStorage(`lf_tweaks_${flowId}`, JSON.stringify(tweak));
+    setLocalStorage(`vyturrlynk_tweaks_${flowId}`, JSON.stringify(tweak));
     set({
       tweaks: tweak,
     });

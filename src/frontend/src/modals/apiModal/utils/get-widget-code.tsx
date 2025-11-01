@@ -24,7 +24,7 @@ build/static/js/bundle.min.js">
   const { protocol, host } = customGetHostProtocol();
 
   return `${source}
-  <langflow-chat
+  <vyturrlynk-chat
     window_title="${flowName}"
     flow_id="${flowId}"
     host_url="${protocol}//${host}"${
@@ -33,5 +33,5 @@ build/static/js/bundle.min.js">
     api_key="..."`
         : ""
     }>
-</langflow-chat>`;
+</vyturrlynk-chat>`;
 }
