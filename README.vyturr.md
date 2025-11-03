@@ -1,17 +1,5 @@
-# 1. Build locally (currently running)
-cd src/frontend
-npm run build
+docker build --rm -f docker/build_and_push.Dockerfile -t langflow:1.6.4 .
+docker run -p 7860:7860 langflow:1.6.4
 
-# 2. Then use simple Docker (after build completes)
-cd ../../docker_example
-docker compose -f docker-compose.local.yml build langflow
-
-
-# Option 2 (Custom Build):
-cd docker_example  
-docker compose -f docker-compose.custom.yml build langflow
-
-
-# Option 1
-cd docker_example
-docker compose build langflow
+docker build --rm -t langflow-custom-flow:1.6.4 .
+docker run -p 7861:7860 langflow-custom-flow:1.6.4
